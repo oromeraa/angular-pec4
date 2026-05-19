@@ -61,4 +61,59 @@ describe('HeaderComponent', () => {
     component.logout();
     expect(navigateSpy).toHaveBeenCalledWith('home');
   });
+
+  it('Debería mostrar los menús "home", "login" y "register" cuando no estamos autenticados', () => {
+    // Arrange
+    const compiled: HTMLElement = fixture.nativeElement;
+
+    // Act
+    const buttons = Array.from(compiled.querySelectorAll('button'));
+
+    const homeBtn = buttons.filter((btn) => btn.textContent?.includes('Home'));
+
+    const loginBtn = buttons.filter((btn) =>
+      btn.textContent?.includes('Login'),
+    );
+
+    const registerBtn = buttons.filter((btn) =>
+      btn.textContent?.includes('Register'),
+    );
+
+    // Assert
+    expect(homeBtn[0]).toBeTruthy();
+    expect(loginBtn[0]).toBeTruthy();
+    expect(registerBtn[0]).toBeTruthy();
+  });
+
+  it('Debería mostrar los menús "home", "admin posts", "admin categories", "profile" y "logout" cuando estamos autenticados', () => {
+    // Arrange
+    component.showAuthSection = true;
+    component.showNoAuthSection = false;
+    fixture.detectChanges();
+
+    const compiled: HTMLElement = fixture.nativeElement;
+
+    // Act
+    const buttons = Array.from(compiled.querySelectorAll('button'));
+    const homeBtn = buttons.filter((btn) => btn.textContent?.includes('Home'));
+    const postsBtn = buttons.filter((btn) =>
+      btn.textContent?.includes('Admin posts'),
+    );
+    const categoriesBtn = buttons.filter((btn) =>
+      btn.textContent?.includes('Admin categories'),
+    );
+    const profileBtn = buttons.filter((btn) =>
+      btn.textContent?.includes('Profile'),
+    );
+    const logoutBtn = buttons.filter((btn) =>
+      btn.textContent?.includes('Logout'),
+    );
+
+    // Assert
+    expect(homeBtn[0]).toBeTruthy();
+    expect(postsBtn[0]).toBeTruthy();
+    expect(categoriesBtn[0]).toBeTruthy();
+    expect(profileBtn[0]).toBeTruthy();
+    expect(logoutBtn[0]).toBeTruthy();
+  });
 });
