@@ -12,7 +12,6 @@ describe('FormatDatePipe', () => {
     expect(pipe).toBeTruthy();
   });
 
-
   it('Debería devolver ddmmyyyy cuando el tipo de formato es 1', () => {
     // Arrange
     const type = 1;

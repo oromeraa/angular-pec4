@@ -9,7 +9,7 @@ describe('HeaderComponent', () => {
   let fixture: ComponentFixture<HeaderComponent>;
   let navigateSpy: jasmine.Spy;
 
-  beforeEach( () => {
+  beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [HeaderComponent],
       imports: [RouterTestingModule],
@@ -36,7 +36,7 @@ describe('HeaderComponent', () => {
     component.navigationTo('login');
     expect(navigateSpy).toHaveBeenCalledWith('login');
   });
-  
+
   it('Debería navegar a "register"', () => {
     component.navigationTo('register');
     expect(navigateSpy).toHaveBeenCalledWith('register');
@@ -61,5 +61,4 @@ describe('HeaderComponent', () => {
     component.logout();
     expect(navigateSpy).toHaveBeenCalledWith('home');
   });
-
 });
