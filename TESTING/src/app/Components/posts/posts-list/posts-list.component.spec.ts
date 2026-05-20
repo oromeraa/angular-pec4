@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { Router } from '@angular/router';
-import { RouterTestingModule } from '@angular/router/testing';
+import { provideRouter, Router } from '@angular/router';
 import { of } from 'rxjs';
 
 import { PostDTO } from 'src/app/Models/post.dto';
@@ -42,8 +41,9 @@ describe('PostsListComponent', () => {
 
     TestBed.configureTestingModule({
       declarations: [PostsListComponent],
-      imports: [CommonModule, RouterTestingModule],
+      imports: [CommonModule],
       providers: [
+        provideRouter([]),
         // En lugar de los servicios reales, usamos nuestros spy
         { provide: PostService, useValue: postServiceSpy },
         { provide: LocalStorageService, useValue: localStorageSpy },

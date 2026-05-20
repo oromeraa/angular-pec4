@@ -1,6 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { Router } from '@angular/router';
-import { RouterTestingModule } from '@angular/router/testing';
+import { provideRouter, Router } from '@angular/router';
 
 import { HeaderComponent } from './header.component';
 
@@ -12,7 +11,7 @@ describe('HeaderComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [HeaderComponent],
-      imports: [RouterTestingModule],
+      providers: [provideRouter([])],
     });
 
     const router = TestBed.inject(Router);
