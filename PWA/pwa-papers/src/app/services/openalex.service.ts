@@ -50,8 +50,4 @@ export class OpenalexService {
       imageUrl: `https://picsum.photos/seed/${seed}/200`,
     };
   }
-
-  getPhotoUrl(seed: string): string {
-    return `https://picsum.photos/seed/${seed}/200`;
-  }
 }

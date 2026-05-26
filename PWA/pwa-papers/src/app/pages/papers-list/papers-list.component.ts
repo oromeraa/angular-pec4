@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatIconModule } from '@angular/material/icon';
@@ -20,7 +20,6 @@ import { OpenalexService } from '../../services/openalex.service';
     CardComponent,
     GridComponent,
   ],
-  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './papers-list.component.html',
   styleUrl: './papers-list.component.scss',
 })
