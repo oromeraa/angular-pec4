@@ -13,7 +13,6 @@ import { Paper } from '../../models/paper.interface';
 })
 export class PaperDetailComponent implements OnInit {
   paper = signal<Paper | null>(null);
-  showAllDetails = signal(false);
 
   constructor(
     private openalexService: OpenalexService,
@@ -27,9 +26,5 @@ export class PaperDetailComponent implements OnInit {
         this.paper.set(paper);
       });
     }
-  }
-
-  toggleDetails(): void {
-    this.showAllDetails.update((v) => !v);
   }
 }

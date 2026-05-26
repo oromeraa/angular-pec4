@@ -1,38 +1,22 @@
-@if (paper(); as p) {
-  <div class="detail-header">
-    <h1>{{ p.title }}</h1>
-    <a mat-raised-button color="warn" routerLink="/papers">Back</a>
-  </div>
+<div class="detail-container">
+  @if (paper(); as p) {
+    <div class="detail-header">
+      <h1>{{ p.title }}</h1>
+      <a mat-raised-button color="warn" routerLink="/papers">Back</a>
+    </div>
 
-  <button mat-raised-button color="primary" (click)="toggleDetails()">
-    {{ showAllDetails() ? "Hide details" : "Show all details" }}
-  </button>
-
-  @if (showAllDetails()) {
     <mat-accordion class="details-accordion">
       <mat-expansion-panel>
         <mat-expansion-panel-header>
-          <mat-panel-title>Image</mat-panel-title>
+          <mat-panel-title>Show all details</mat-panel-title>
         </mat-expansion-panel-header>
         <img [src]="p.imageUrl" alt="paper image" />
-      </mat-expansion-panel>
-
-      <mat-expansion-panel>
-        <mat-expansion-panel-header>
-          <mat-panel-title>Author</mat-panel-title>
-        </mat-expansion-panel-header>
-        <p>{{ p.author }}</p>
-      </mat-expansion-panel>
-
-      <mat-expansion-panel>
-        <mat-expansion-panel-header>
-          <mat-panel-title>Metadata</mat-panel-title>
-        </mat-expansion-panel-header>
+        <p><strong>OpenAlex ID:</strong> {{ p.id }}</p>
+        <p><strong>DOI:</strong> {{ p.doi === null ? "N/A" : p.doi }}</p>
+        <p><strong>Author:</strong> {{ p.author }}</p>
         <p><strong>Year:</strong> {{ p.publication_year }}</p>
         <p><strong>Type:</strong> {{ p.type }}</p>
-        <p><strong>DOI:</strong> {{ p.doi ?? "N/A" }}</p>
-        <p><strong>OpenAlex ID:</strong> {{ p.id }}</p>
       </mat-expansion-panel>
     </mat-accordion>
   }
-}
+</div>
