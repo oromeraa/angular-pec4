@@ -14,7 +14,11 @@
     </mat-button-toggle-group>
   </div>
 
-  @if (viewMode() === "cards") {
+  @if (loading()) {
+    <div class="spinner-container">
+      <mat-spinner />
+    </div>
+  } @else if (viewMode() === "cards") {
     <div class="cards-container">
       @for (paper of papers(); track paper.id) {
         <app-card [paper]="paper" />
