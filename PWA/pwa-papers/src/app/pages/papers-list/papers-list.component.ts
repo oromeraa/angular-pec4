@@ -23,7 +23,7 @@ import { OpenalexService } from '../../services/openalex.service';
   styleUrl: './papers-list.component.scss',
 })
 export class PapersListComponent {
-  viewMode = signal<'grid' | 'table'>('grid');
+  viewMode = signal<'cards' | 'grid'>('cards');
   papers = signal<Paper[]>([]);
 
   constructor(private openalexService: OpenalexService) {}

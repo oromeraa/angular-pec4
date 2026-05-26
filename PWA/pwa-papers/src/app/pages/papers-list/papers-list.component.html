@@ -1,20 +1,20 @@
 <div class="papers-container">
   <div class="papers-header">
-    <h3>Papers List</h3>
+    <h1>Papers List</h1>
     <mat-button-toggle-group
       [value]="viewMode()"
       (change)="viewMode.set($event.value)"
     >
-      <mat-button-toggle value="grid">
-        <mat-icon>grid_view</mat-icon>
+      <mat-button-toggle value="cards">
+        <mat-icon>view_module</mat-icon>
       </mat-button-toggle>
-      <mat-button-toggle value="table">
+      <mat-button-toggle value="grid">
         <mat-icon>view_list</mat-icon>
       </mat-button-toggle>
     </mat-button-toggle-group>
   </div>
 
-  @if (viewMode() === "grid") {
+  @if (viewMode() === "cards") {
     <div class="cards-container">
       @for (paper of papers(); track paper.id) {
         <app-card [paper]="paper" />

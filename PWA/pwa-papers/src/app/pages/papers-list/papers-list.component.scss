@@ -1,6 +1,6 @@
 .papers-container {
   width: 100%;
-  max-width: 800px;
+  max-width: 900px;
   border: 1px solid #000;
   border-radius: 8px;
   padding: 16px;
@@ -11,14 +11,12 @@
   justify-content: space-between;
   align-items: center;
   gap: 8px;
-}
-
-.view-toggle {
-  display: flex;
-  gap: 8px;
+  padding: 20px;
 }
 
 .cards-container {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  padding: 20px;
 }

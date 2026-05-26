@@ -18,7 +18,7 @@ export class OpenalexService {
       Math.floor(Math.random() * (maxYear - minYear + 1)) + minYear;
     return this.http
       .get<any>(
-        `${this.apiOpenAlexUrl}?filter=publication_year:${randomYear}&per_page=10&select=id,doi,title,publication_year,type,authorships`,
+        `${this.apiOpenAlexUrl}?filter=publication_year:${randomYear}&per_page=12&select=id,doi,title,publication_year,type,authorships`,
       )
       .pipe(
         map((res) => {
