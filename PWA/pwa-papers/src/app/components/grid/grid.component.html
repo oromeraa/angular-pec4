@@ -1,0 +1,24 @@
+<table mat-table [dataSource]="papers" class="papers-table">
+  <ng-container matColumnDef="title">
+    <th mat-header-cell *matHeaderCellDef>Title</th>
+    <td mat-cell *matCellDef="let p">{{ p.title }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="author">
+    <th mat-header-cell *matHeaderCellDef>Author</th>
+    <td mat-cell *matCellDef="let p">{{ p.author }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="year">
+    <th mat-header-cell *matHeaderCellDef>Year</th>
+    <td mat-cell *matCellDef="let p">{{ p.publication_year }}</td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="showedColumns"></tr>
+  <tr
+    mat-row
+    *matRowDef="let row; columns: showedColumns"
+    [routerLink]="['/paper', row.id]"
+    class="clickable-row"
+  ></tr>
+</table>

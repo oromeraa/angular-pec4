@@ -1,12 +1,26 @@
-<h1>Papers List</h1>
 <div class="papers-container">
-  <mat-list>
-    @for (paper of papers; track paper.id) {
-      <mat-list-item>
-        <a [routerLink]="['/paper', paper.id]">
-          {{ paper.title }} - {{ paper.author }}
-        </a>
-      </mat-list-item>
-    }
-  </mat-list>
+  <div class="papers-header">
+    <h3>Papers List</h3>
+    <mat-button-toggle-group
+      [value]="viewMode()"
+      (change)="viewMode.set($event.value)"
+    >
+      <mat-button-toggle value="grid">
+        <mat-icon>grid_view</mat-icon>
+      </mat-button-toggle>
+      <mat-button-toggle value="table">
+        <mat-icon>view_list</mat-icon>
+      </mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+
+  @if (viewMode() === "grid") {
+    <div class="cards-container">
+      @for (paper of papers(); track paper.id) {
+        <app-card [paper]="paper" />
+      }
+    </div>
+  } @else {
+    <app-grid [papers]="papers()" />
+  }
 </div>

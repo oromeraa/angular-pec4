@@ -28,6 +28,12 @@ export class OpenalexService {
       );
   }
 
+  getPaperById(id: string): Observable<Paper> {
+    return this.http
+      .get<any>(`${this.apiOpenAlexUrl}/${id}`)
+      .pipe(map((paper) => this.compactResults(paper)));
+  }
+
   private compactResults(paper: any): Paper {
     const seed = paper.id.split('/').at(-1);
 
@@ -43,5 +49,9 @@ export class OpenalexService {
       author: firstAuthor,
       imageUrl: `https://picsum.photos/seed/${seed}/200`,
     };
+  }
+
+  getPhotoUrl(seed: string): string {
+    return `https://picsum.photos/seed/${seed}/200`;
   }
 }

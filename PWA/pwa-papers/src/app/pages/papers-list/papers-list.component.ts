@@ -1,26 +1,36 @@
-import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
-import { OpenalexService } from '../../services/openalex.service';
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatIconModule } from '@angular/material/icon';
 
-import { OnInit } from '@angular/core';
-import { MatListModule } from '@angular/material/list';
+import { CardComponent } from '../../components/card/card.component';
+import { GridComponent } from '../../components/grid/grid.component';
+
 import { Paper } from '../../models/paper.interface';
+import { OpenalexService } from '../../services/openalex.service';
 
 @Component({
   selector: 'app-papers-list',
-  imports: [RouterLink, MatListModule],
+  imports: [
+    MatIconModule,
+    MatButtonModule,
+    MatButtonToggleModule,
+    CardComponent,
+    GridComponent,
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './papers-list.component.html',
   styleUrl: './papers-list.component.scss',
 })
-export class PapersListComponent implements OnInit {
-  papers = new Array<Paper>();
+export class PapersListComponent {
+  viewMode = signal<'grid' | 'table'>('grid');
+  papers = signal<Paper[]>([]);
 
   constructor(private openalexService: OpenalexService) {}
 
   ngOnInit(): void {
     this.openalexService.getPapers().subscribe((response) => {
-      this.papers = response;
-      console.log(response);
+      this.papers.set(response);
     });
   }
 }

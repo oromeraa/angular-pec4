@@ -3,7 +3,7 @@ import { PaperDetailComponent } from './pages/paper-detail/paper-detail.componen
 import { PapersListComponent } from './pages/papers-list/papers-list.component';
 
 export const routes: Routes = [
-  { path: '', redirectTo: '/papers', pathMatch: 'full' },
+  { path: '', redirectTo: 'papers', pathMatch: 'full' },
   { path: 'papers', component: PapersListComponent },
   { path: 'paper/:id', component: PaperDetailComponent },
 ];
