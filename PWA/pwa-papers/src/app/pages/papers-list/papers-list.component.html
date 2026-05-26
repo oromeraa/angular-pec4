@@ -1,0 +1,12 @@
+<h1>Papers List</h1>
+<div class="papers-container">
+  <mat-list>
+    @for (paper of papers; track paper.id) {
+      <mat-list-item>
+        <a [routerLink]="['/paper', paper.id]">
+          {{ paper.title }} - {{ paper.author }}
+        </a>
+      </mat-list-item>
+    }
+  </mat-list>
+</div>
