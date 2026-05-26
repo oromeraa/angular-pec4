@@ -12,8 +12,8 @@ export class OpenalexService {
   constructor(private http: HttpClient) {}
 
   getPapers(): Observable<Paper[]> {
-    const maxYear = 2026;
-    const minYear = 1980;
+    const maxYear = 2025;
+    const minYear = 2020;
     const randomYear =
       Math.floor(Math.random() * (maxYear - minYear + 1)) + minYear;
     return this.http
