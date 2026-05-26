@@ -1,4 +1,7 @@
-<mat-card mat-card class="paper-card" [routerLink]="['/paper', paper.id]">
+<mat-card
+  class="paper-card animate__animated animate__fadeInUp"
+  [routerLink]="['/paper', paper.id]"
+>
   <img mat-card-image [src]="paper.imageUrl" alt="paper image" />
   <mat-card-content>
     <h3>{{ paper.title }}</h3>
